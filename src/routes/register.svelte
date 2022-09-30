@@ -4,10 +4,10 @@
 	import { post } from 'utils.js';
 	const { session } = stores();
 	let username = '';
-	let email = '';
+	let name = '';
 	let password = '';
 	async function submit(event) {
-		const response = await post(`auth/register`, { username, email, password });
+		const response = await post(`auth/register`, { username, name, password });
 
 		if (response.user) {
 			$session.user = response.user;
@@ -29,12 +29,13 @@
 					<a href="/login">Have an account?</a>
 				</p>
 
+
 				<form on:submit|preventDefault={submit}>
 					<fieldset class="form-group">
 						<input class="form-control form-control-lg" type="text" required placeholder="Your Name" bind:value={username}>
 					</fieldset>
 					<fieldset class="form-group">
-						<input class="form-control form-control-lg" type="email" required placeholder="Email" bind:value={email}>
+						<input class="form-control form-control-lg" type="text" required placeholder="Name" bind:value={name}>
 					</fieldset>
 					<fieldset class="form-group">
 						<input class="form-control form-control-lg" type="password" required placeholder="Password" bind:value={password}>
