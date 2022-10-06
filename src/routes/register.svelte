@@ -22,7 +22,6 @@
 <svelte:head>
 	<title>Sign up • Svelte project</title>
 </svelte:head>
-//sadas
 <div class="auth-page">
 	<div class="container page">
 		<div class="row">
