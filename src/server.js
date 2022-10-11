@@ -25,7 +25,7 @@ polka() // You can also use Express
 				maxAge: 31536000
 			},
 			store: new FileStore({
-				path: '.session'
+				path: '.sessions'
 			})
 		}),
 		sapper.middleware({
