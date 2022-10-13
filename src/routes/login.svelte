@@ -1,14 +1,14 @@
 <script context="module">
     export async function preload({ params }, { token }) {
         if (token) {
-            this.redirect(302, `/`);
+            this.redirect(302, `/overview`);
         }
     }
 </script>
 
 <script>
     import { goto, stores } from '@sapper/app';
-    import { post } from 'utils.js';
+    import { post } from '../node_modules/utils';
 
     const { session } = stores();
 
@@ -24,14 +24,13 @@
         console.log(response)
         if (response.token) {
             $session.token = response.token;
-            goto('/');
+            goto('/overview');
         }
     }
 </script>
 
 <svelte:head>
     <title>Sign in • Conduit</title>
-
 </svelte:head>
 
 <div class="auth-page">
@@ -45,11 +44,9 @@
                 {#if error}
                     <div class="alert alert-danger" role="alert">{error}</div>
                 {/if}
-
-
                 <form on:submit|preventDefault={submit}>
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="text" required placeholder="Username" bind:value={username}>
+                        <input class="form-control form-control-lg" type="text" required placeholder="Email" bind:value={username}>
                     </fieldset>
                     <fieldset class="form-group">
                         <input class="form-control form-control-lg" type="password" required placeholder="Password" bind:value={password}>
